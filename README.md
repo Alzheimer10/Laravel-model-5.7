@@ -22,3 +22,7 @@ Fácil creación de Slugs para tus modelos de Eloquent en Laravel.
 Laravel Español
 https://github.com/Laraveles/spanish
 Paquete de traducciones en español para Laravel 5. Este paquete te agrega a tu proyecto los ficheros de traducciones en español que Laravel 5 trae por defecto.
+
+Laravel 5 log viewer
+https://github.com/rap2hpoutre/laravel-log-viewer
+Visor de registro pequeño para laravel.
