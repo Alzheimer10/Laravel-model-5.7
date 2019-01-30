@@ -43,13 +43,15 @@
         </a>
         <div class="dropdown-menu dropdown-menu-small">
           <a class="dropdown-item" href="{{ route('customer.profile') }}">
-            <i class="material-icons">&#xE7FD;</i> Profile</a>
+            <i class="material-icons">&#xE7FD;</i> Profile
+          </a>
           <a class="dropdown-item" href="{{ route('about') }}">
-            <i class="material-icons">vertical_split</i> about</a>
+            <i class="material-icons">vertical_split</i> about
+          </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="{{ route('customer.logout') }}"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+            <i class="material-icons text-danger">&#xE879;</i> Logout 
           </a>
         </div>
         <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" style="display: none;">

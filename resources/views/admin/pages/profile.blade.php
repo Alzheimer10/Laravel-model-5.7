@@ -1,13 +1,15 @@
 @extends('admin.layout.master')
 
 @section('content')
-  <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
-    <i class="fa fa-check mx-2"></i>
-    <strong>Success!</strong> Your profile has been updated!
-  </div>
+  @if (session('status'))
+    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+      <i class="fa fa-check mx-2"></i>
+      <strong>{{ session('status') }}!</strong> Your profile has been updated!
+    </div>
+  @endif
   <div class="main-content-container container-fluid px-4">
     <!-- / .main-navbar -->
     <div class="main-content-container container-fluid px-4">
@@ -26,10 +28,10 @@
             <div class="card-header border-bottom text-center">
               <div class="mb-3 mx-auto">
                 <img class="rounded-circle" src="{{ asset('images/avatars/0.jpg') }}" alt="User Avatar" width="110"> </div>
-              <h4 class="mb-0">Sierra Brooks</h4>
-              <span class="text-muted d-block mb-2">Project Manager</span>
-              <button type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
-                <i class="material-icons mr-1">person_add</i>Follow</button>
+              <h4 class="mb-0"> {{ Auth::user()->name }} {{ Auth::user()->lastname }}  </h4>
+              <span class="text-muted d-block mb-2">{{ Auth::user()->getRoleNames()[0] }}</span>
+              {{-- <button type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2"> --}}
+                {{-- <i class="material-icons mr-1">person_add</i>Follow</button> --}}
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item px-4">
@@ -58,22 +60,23 @@
               <li class="list-group-item p-3">
                 <div class="row">
                   <div class="col">
-                    <form>
+                    <form class="form-horizontal" role="form" method="POST">
+                      {{ csrf_field() }}
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="feFirstName">First Name</label>
-                          <input type="text" class="form-control" id="feFirstName" placeholder="First Name" value="Sierra"> </div>
+                          <label for="name">First Name</label>
+                          <input type="text" class="form-control" id="name" value="{{ is_null(old('name'))? Auth::user()->name : old('name') }}" placeholder="{{ Auth::user()->name }}">
+                        </div>
                         <div class="form-group col-md-6">
-                          <label for="feLastName">Last Name</label>
-                          <input type="text" class="form-control" id="feLastName" placeholder="Last Name" value="Brooks"> </div>
+                          <label for="lastname">Last Name</label>
+                          <input type="text" class="form-control" id="lastname" value="{{ is_null(old('lastname'))? Auth::user()->lastname : old('lastname') }}" placeholder="{{ Auth::user()->lastname }}">
+                        </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="feEmailAddress">Email</label>
-                          <input type="email" class="form-control" id="feEmailAddress" placeholder="Email" value="sierra@example.com"> </div>
-                        <div class="form-group col-md-6">
-                          <label for="fePassword">Password</label>
-                          <input type="password" class="form-control" id="fePassword" placeholder="Password"> </div>
+                          <label for="email">Email</label>
+                          <input type="email" class="form-control" id="email" value="{{ is_null(old('email'))? Auth::user()->email : old('email') }}" placeholder="{{ Auth::user()->email }}">
+                        </div>
                       </div>
                       <div class="form-group">
                         <label for="feInputAddress">Address</label>

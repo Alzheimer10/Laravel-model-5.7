@@ -55,13 +55,20 @@
         </a>
         <div class="dropdown-menu dropdown-menu-small">
           <a class="dropdown-item" href="{{ route('admin.profile') }}">
-            <i class="material-icons">&#xE7FD;</i> Profile</a>
+            <i class="material-icons">&#xE7FD;</i> Profile
+          </a>
           <a class="dropdown-item" href="{{ route('admin.about') }}">
-            <i class="material-icons">vertical_split</i> about</a>
+            <i class="material-icons">vertical_split</i> about
+          </a>
+          @role('superadmin')
+            <a class="dropdown-item" href="{{ route('admin.logs') }}">
+              <i class="material-icons">vertical_split</i> logs
+            </a>
+          @endrole
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="{{ url('/admin/logout') }}"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+            <i class="material-icons text-danger">&#xE879;</i> Logout 
           </a>
         </div>
         <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
