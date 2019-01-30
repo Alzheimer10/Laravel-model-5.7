@@ -26,3 +26,7 @@ Paquete de traducciones en español para Laravel 5. Este paquete te agrega a tu 
 Laravel 5 log viewer
 https://github.com/rap2hpoutre/laravel-log-viewer
 Visor de registro pequeño para laravel.
+
+Log activity inside your Laravel app
+https://github.com/spatie/laravel-activitylog
+El paquete spatie / laravel-activitylog proporciona funciones fáciles de usar para registrar las actividades de los usuarios de su aplicación. También puede registrar automáticamente eventos modelo. El paquete almacena toda la actividad en la tabla activity_log.

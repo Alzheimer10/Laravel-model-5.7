@@ -8,14 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Admin extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
     use Sluggable;
+    use LogsActivity;
 
     protected $guard_name = 'admin'; // or whatever guard you want to use
+    protected static $logFillable = true;
 
     /**
      * The attributes that are mass assignable.

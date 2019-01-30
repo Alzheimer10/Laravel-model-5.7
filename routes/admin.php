@@ -16,6 +16,10 @@ Route::group(['middleware' => ['role:superadmin']], function () {
 	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
 });
 
-Route::group(['middleware' => ['permission:publish articles']], function () {
-    //
+Route::group(['middleware' => ['role:superadmin']], function () {
+	Route::get('activity', 'Admin\ActivityController@index')->name('logs');
+	Route::get('activity/user/{slugUser}', 'Admin\ActivityController@index')->name('logs.user');
+
+	Route::get('activity/test', 'Admin\ActivityController@test')->name('logs.test');
+	Route::get('activity/evento', 'Admin\ActivityController@evento')->name('logs.evento');
 });
